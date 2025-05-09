@@ -64,14 +64,14 @@ for(n in range_of_n) {
 library(ggplot2)
 
 # Create a data frame to hold the results for plotting
-data <- data.frame(
+df <- data.frame(
   n = rep(range_of_n, 2),  # Repeating sample sizes for both estimators
   variance = c(var_umvue, var_ube),  # Combine variances for both estimators
   estimator = rep(c("UMVUE", "UBE"), each = length(range_of_n))  # Label each estimator type
 )
 
 # Plot the data using ggplot2
-ggplot(data, aes(x = n, y = variance, color = estimator, group = estimator)) +
+ggplot(df, aes(x = n, y = variance, color = estimator, group = estimator)) +
   geom_line(linewidth = 1) +  # Draw line for each estimator to show variance trend
   geom_point(size = 2) +  # Draw points for each sample size to highlight data points
   scale_y_continuous(trans = "log") +  # Apply natural log transformation on y-axis for better visualization
